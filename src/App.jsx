@@ -2,7 +2,8 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import React, { useEffect } from "react";
 
 // Pages
 import Index from "./Index";
@@ -14,8 +15,6 @@ import HomeLoanPage from "./pages/services/HomeLoanPage";
 import PropertyLoanPage from "./pages/services/PropertyLoanPage";
 import BalanceTransferPage from "./pages/services/BalanceTransferPage";
 import BusinessLoanPage from "./pages/services/BusinessLoanPage";
-
-
 
 // Calculator Pages
 import LoanCalculators from "./components/LoanCalculators/LoanCalculators";
@@ -39,9 +38,16 @@ import BankPartnerDetails from "./pages/BankPartnerDetails";
 import ReferAndEarn from "./pages/services/ReferAndEarn";
 import JoinAsPartner from "./pages/services/JoinAsPartner";
 
-
-
 const queryClient = new QueryClient();
+
+// ScrollToTop component
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+};
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -49,41 +55,51 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-      <MobileNavbar />
+        <ScrollToTop /> {/* Scroll to top on route change */}
+        <MobileNavbar />
         <Routes>
           <Route path="/" element={<Index />} />
-         
-          
+
           {/* Service Pages */}
           <Route path="/home-loan" element={<HomeLoanPage />} />
           <Route path="/property-loan" element={<PropertyLoanPage />} />
           <Route path="/balance-transfer" element={<BalanceTransferPage />} />
           <Route path="/business-loan" element={<BusinessLoanPage />} />
-          
+
           {/* Calculator Pages */}
-          <Route path="/calculators" element={<LoanCalculators/>}/>
+          <Route path="/calculators" element={<LoanCalculators />} />
           <Route path="/calculators/emi" element={<EMICalculatorPage />} />
-          <Route path="/calculators/eligibility" element={<EligibilityCalculatorPage />} />
-          <Route path="/calculators/foreclose" element={<ForecloseCalculatorPage />} />
-          <Route path="/calculators/pre-payment" element={<PrePaymentCalculatorPage />} />
-          <Route path="/calculators/balance-transfer" element={<BalanceTransferCalculatorPage />} />
-          
+          <Route
+            path="/calculators/eligibility"
+            element={<EligibilityCalculatorPage />}
+          />
+          <Route
+            path="/calculators/foreclose"
+            element={<ForecloseCalculatorPage />}
+          />
+          <Route
+            path="/calculators/pre-payment"
+            element={<PrePaymentCalculatorPage />}
+          />
+          <Route
+            path="/calculators/balance-transfer"
+            element={<BalanceTransferCalculatorPage />}
+          />
+
           {/* Other Pages */}
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/offers&cashback" element={<OffersPage />} />
           <Route path="/loans" element={<LoanServicesFooter />} />
-           <Route path="/terms" element={<TermsAndConditions/>} />
-            <Route path="/privacy" element={<PrivacyPolicy/>} />
-             <Route path="/disclaimer" element={<Disclaimer/>} />
-                <Route path="/faqs" element={<FAQPage/>} />
-                  <Route path="/customer" element={<CustomerSupport/>} />
-                  <Route path="/join" element={<JoinAsPartner/>} />
-                  <Route path="/bank" element={<BankPartnerDetails/>} />
-                  <Route path="/refer" element={<ReferAndEarn/>} />
+          <Route path="/terms" element={<TermsAndConditions />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route path="/disclaimer" element={<Disclaimer />} />
+          <Route path="/faqs" element={<FAQPage />} />
+          <Route path="/customer" element={<CustomerSupport />} />
+          <Route path="/join" element={<JoinAsPartner />} />
+          <Route path="/bank" element={<BankPartnerDetails />} />
+          <Route path="/refer" element={<ReferAndEarn />} />
 
-
-          
           {/* Catch-all route */}
           <Route path="*" element={<NotFound />} />
         </Routes>
