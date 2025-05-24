@@ -35,8 +35,8 @@ const MobileNavbar = () => {
     }
     if (location.pathname === "/calculators") {
       const params = new URLSearchParams(location.search);
-      const tab = params.get("tab");
-      const tabs = ["emi", "eligibility", "balance-transfer", "foreclosure", "prepayment"];
+      const tab = params.get("type"); // Changed to "type"
+      const tabs = ["emi", "eligibility", "balance-transfer", "foreclose", "pre-payment"];
       const idx = tabs.indexOf(tab);
       setClickedItem(idx !== -1 ? idx : 0);
     }
@@ -175,11 +175,11 @@ const MobileNavbar = () => {
               {/* Calculators submenu */}
               {menu === "calculators" &&
                 [
-                  { name: "EMI Calculator", path: "/calculators", query: "?tab=emi", icon: <FaCalculator style={iconStyle} /> },
-                  { name: "Eligibility Calculator", path: "/calculators", query: "?tab=eligibility", icon: <FaCheckCircle style={iconStyle} /> },
-                  { name: "Balance Transfer Calculator", path: "/calculators", query: "?tab=balance-transfer", icon: <FaSyncAlt style={iconStyle} /> },
-                  { name: "Foreclosure Calculator", path: "/calculators", query: "?tab=foreclosure", icon: <FaLockOpen style={iconStyle} /> },
-                  { name: "Prepayment Calculator", path: "/calculators", query: "?tab=prepayment", icon: <FaCreditCard style={iconStyle} /> },
+                  { name: "EMI Calculator", path: "/calculators", query: "?type=emi", icon: <FaCalculator style={iconStyle} /> },
+                  { name: "Eligibility Calculator", path: "/calculators", query: "?type=eligibility", icon: <FaCheckCircle style={iconStyle} /> },
+                  { name: "Balance Transfer Calculator", path: "/calculators", query: "?type=balance-transfer", icon: <FaSyncAlt style={iconStyle} /> },
+                  { name: "Foreclosure Calculator", path: "/calculators", query: "?type=foreclose", icon: <FaLockOpen style={iconStyle} /> },
+                  { name: "Prepayment Calculator", path: "/calculators", query: "?type=pre-payment", icon: <FaCreditCard style={iconStyle} /> },
                 ].map((item, idx) => (
                   <div
                     key={idx}
