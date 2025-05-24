@@ -1,6 +1,7 @@
 {
+  "buildCommand": "npm install && chmod +x node_modules/.bin/vite && npm run build",
   "version": 2,
-  "buildCommand": "npm run build",
+  
   "installCommand": "npm install",
   "outputDirectory": "dist",
   "cleanUrls": true,
@@ -10,4 +11,5 @@
       "destination": "/index.html"
     }
   ]
+  
 }
