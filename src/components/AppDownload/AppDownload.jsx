@@ -17,13 +17,13 @@ const AppDownloadSection = () => {
         </div>
 
         {/* Main Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2  items-start">
           {/* Left Content */}
           <div>
-            <div className="space-y-6 mb-10">
+            <div className="space-y-6 mb-10 ">
               {/* Headquarters */}
-              <div className="flex items-start">
-                <div className="flex-shrink-0 w-12 h-12 bg-[#e6f2ff] rounded-full flex items-center justify-center text-[#0074d9]">
+              <div className="flex items-start ">
+                <div className="flex-shrink-0 w-12  h-12 bg-[#e6f2ff] rounded-full flex items-center justify-center text-[#0074d9]">
                   <MapPin className="w-5 h-5" />
                 </div>
                 <div className="ml-4">
@@ -53,10 +53,12 @@ const AppDownloadSection = () => {
               </div>
             </div>
             {/* Download App */}
-            <div className="flex flex-wrap justify-center sm:justify-start gap-3">
+     <div className="flex flex-wrap justify-center sm:justify-start gap-3">
               {/* App Store Button */}
               <a
-                href="#"
+                href="https://www.apple.com/in/app-store/" // <-- yeh Apple App Store ka link hai
+                target="_blank"
+                rel="noopener noreferrer"
                 className="bg-black text-white py-2 px-4 rounded-md shadow-sm hover:bg-gray-900 transition-all duration-300 text-center w-40"
               >
                 <div className="leading-tight">
@@ -67,7 +69,9 @@ const AppDownloadSection = () => {
 
               {/* Google Play Button */}
               <a
-                href="#"
+                href="http://play.google.com/store/games?hl=en" // <-- yeh Play Store ka link hai
+                target="_blank"
+                rel="noopener noreferrer"
                 className="bg-[#34A853] text-white py-2 px-4 rounded-md shadow-sm hover:bg-green-700 transition-all duration-300 text-center w-40"
               >
                 <div className="leading-tight">
@@ -76,10 +80,8 @@ const AppDownloadSection = () => {
                 </div>
               </a>
             </div>
-
-
-
           </div>
+
           {/* Map Section */}
           <div className="relative " style={{ marginTop: "-100px" }}>
             {/* India map SVG */}
