@@ -170,7 +170,7 @@ const Calculator = () => {
         <div className="w-full mb-8 px-4 sm:px-6">
           <div className="max-w-2xl mx-auto text-center">
             {getHeading()}
-            {getSubContent()}
+            {/* Sub content hidden on home page */}
           </div>
         </div>
       )}
