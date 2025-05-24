@@ -353,7 +353,7 @@ function ChatWidget() {
                             padding: "6px 12px",
                             fontSize: "0.85rem",
                             animation: "fadeInScale 0.4s ease-in",
-                            animationDelay: `${index * 0.05}s`,
+                            animationDelay: `${index * 0.02}s`,
                             animationFillMode: "both",
                           }}
                         >

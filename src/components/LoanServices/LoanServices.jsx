@@ -23,7 +23,8 @@ const loanServices = [
       'Minimal documentation',
       'No hidden charges',
     ],
-    image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1073&q=80'
+    image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1073&q=80',
+    learnMorePath: '/home-loan',
   },
   {
     id: 'property-loan',
@@ -37,7 +38,8 @@ const loanServices = [
       'Overdraft facility available',
       'Tax benefits as applicable',
     ],
-    image: 'https://images.unsplash.com/photo-1448630360428-65456885c650?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1467&q=80'
+    image: 'https://images.unsplash.com/photo-1448630360428-65456885c650?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1467&q=80',
+    learnMorePath: '/property-loan',
   },
   {
     id: 'balance-transfer',
@@ -51,7 +53,8 @@ const loanServices = [
       'Simplified documentation',
       'No foreclosure charges',
     ],
-    image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80'
+    image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
+    learnMorePath: '/balance-transfer',
   },
   {
     id: 'business-loan',
@@ -65,7 +68,8 @@ const loanServices = [
       'Minimal documentation',
       'Flexible repayment options',
     ],
-    image: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80'
+    image: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80',
+    learnMorePath: '/business-loan',
   },
 ];
 
@@ -73,7 +77,7 @@ const LoanServices = () => {
   const [activeTab, setActiveTab] = useState('home-loan');
 
   return (
-    <section className="section-padding bg-gray-50 pt-4 sm:pt-10" style={{ marginTop: "-50px" }}>
+    <section className="section-padding bg-gray-50 pt-4 sm:pt-10" style={{ marginTop: "-00px" }}>
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -149,7 +153,7 @@ const LoanServices = () => {
                     <Link to="/apply">
                       <Button className="gradient-primary w-full sm:w-auto">Apply Now</Button>
                     </Link>
-                    <Link to="/learn-more">
+                    <Link to={service.learnMorePath}>
                       <Button variant="outline" className="w-full sm:w-auto">Learn More</Button>
                     </Link>
                   </div>

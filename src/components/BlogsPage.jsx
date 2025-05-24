@@ -34,8 +34,14 @@ const BlogsPage = () => {
       className="bg-gray-50 py-10 px-2"
       style={{ fontFamily: "'Glacial Indifference', sans-serif" }}
     >
+      {/* Google Font Import for Glacial Indifference */}
+      <link
+        href="https://fonts.googleapis.com/css2?family=Glacial+Indifference&display=swap"
+        rel="stylesheet"
+      />
+
       {/* Header */}
-      <div className="max-w-3xl mx-auto text-center mb-12">
+      <div className="max-w-3xl mx-auto text-center mb-12" style={{ marginTop: "-70px" }}>
         <h1 className="text-4xl md:text-5xl font-bold mb-3 tracking-tight">
           Latest <span className="text-gradient">Blogs</span>
         </h1>
@@ -54,9 +60,7 @@ const BlogsPage = () => {
             <div
               key={blog.id}
               className="group bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col flex-shrink-0 w-64 sm:w-full h-72 sm:h-auto"
-              style={{
-                scrollSnapAlign: 'start',
-              }}
+              style={{ scrollSnapAlign: 'start' }}
             >
               <div className="relative h-28 sm:h-36">
                 <img

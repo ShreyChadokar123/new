@@ -60,7 +60,7 @@ const HappyCustomers = () => {
       id="happy-customers-section"
       className="section-padding bg-gray-50 h-auto md:h-full" // Adjust height for mobile, keep full height for desktop
     >
-      <div className="container mx-auto">
+      <div className="container mx-auto" style={{marginTop:"-90px"}}>
         <div className="text-center max-w-3xl mx-auto mb-16 animate-fade-in-up">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             <span className="text-gradient">Happy Customers</span>, Real Stories

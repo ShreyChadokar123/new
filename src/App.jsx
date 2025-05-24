@@ -9,6 +9,7 @@ import React, { useEffect } from "react";
 import Index from "./Index";
 import NotFound from "./pages/NotFound";
 import MobileNavbar from "./components/Navbar/MobileNavbar";
+import ChatWidget from "./components/ChatWidget";
 
 // Service Pages
 import HomeLoanPage from "./pages/services/HomeLoanPage";
@@ -23,6 +24,7 @@ import EMICalculatorPage from "./pages/calculators/EMICalculatorPage";
 import EligibilityCalculatorPage from "./pages/calculators/EligibilityCalculatorPage";
 import ForecloseCalculatorPage from "./pages/calculators/ForecloseCalculatorPage";
 import PrePaymentCalculatorPage from "./pages/calculators/PrePaymentCalculatorPage";
+import Layout from "./components/Layout";
 
 // Other Pages
 import AboutPage from "./pages/AboutPage";
@@ -37,6 +39,18 @@ import CustomerSupport from "./CustomerSupport";
 import BankPartnerDetails from "./pages/BankPartnerDetails";
 import ReferAndEarn from "./pages/services/ReferAndEarn";
 import JoinAsPartner from "./pages/services/JoinAsPartner";
+
+
+
+//Banks pages
+import HdfcBankPage from "./components/Banks/HdfcBank";
+import IciciBankPage from "./components/Banks/IciciBank";
+import AxisBankPage from "./components/Banks/AxisBank";
+import BobBankPage from "./components/Banks/Bob";
+import SbiBankPage from "./components/Banks/SbiBank";
+
+
+
 
 const queryClient = new QueryClient();
 
@@ -57,6 +71,8 @@ const App = () => (
       <BrowserRouter>
         <ScrollToTop /> {/* Scroll to top on route change */}
         <MobileNavbar />
+         <ChatWidget/>
+
         <Routes>
           <Route path="/" element={<Index />} />
 
@@ -67,8 +83,8 @@ const App = () => (
           <Route path="/business-loan" element={<BusinessLoanPage />} />
 
           {/* Calculator Pages */}
-          <Route path="/calculators" element={<LoanCalculators />} />
-          <Route path="/calculators/emi" element={<EMICalculatorPage />} />
+          <Route path="/calculators" element= {<Layout> <LoanCalculators /> </Layout>} />
+          <Route path="/calculators/emi" element={ <EMICalculatorPage /> } />
           <Route
             path="/calculators/eligibility"
             element={<EligibilityCalculatorPage />}
@@ -83,7 +99,8 @@ const App = () => (
           />
           <Route
             path="/calculators/balance-transfer"
-            element={<BalanceTransferCalculatorPage />}
+            element={ 
+<BalanceTransferCalculatorPage /> }
           />
 
           {/* Other Pages */}
@@ -99,6 +116,14 @@ const App = () => (
           <Route path="/join" element={<JoinAsPartner />} />
           <Route path="/bank" element={<BankPartnerDetails />} />
           <Route path="/refer" element={<ReferAndEarn />} />
+
+          {/* Banks pages */}
+          <Route path="/hdfc" element={<HdfcBankPage />} />
+          <Route path="/icici" element={<IciciBankPage />} />
+          <Route path="/axis" element={<AxisBankPage />} />
+          <Route path="/bob" element={<BobBankPage />} />
+          <Route path="/sbi" element={<SbiBankPage/>} />
+          
 
           {/* Catch-all route */}
           <Route path="*" element={<NotFound />} />

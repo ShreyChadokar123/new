@@ -88,7 +88,7 @@
 
     return (
       <section id="trending-offers-section" className="py-8 md:py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4" style={{marginTop:"-0px"}}>
           <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16 animate-fade-in-up">
             <h2 className="text-2xl md:text-4xl font-bold font-glacial mb-3 md:mb-4">
               Trending <span className="text-gradient bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">Loans & Offers</span>

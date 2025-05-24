@@ -10,13 +10,15 @@ import { motion } from "framer-motion";
 const iconStyle = {
   fontSize: "16px",
   color: "#666",
-  verticalAlign: "middle"
+  display: "block",
+  margin: "0 auto",
 };
 
 const MobileNavbar = () => {
   const [activeMenu, setActiveMenu] = useState(null);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [clickedItem, setClickedItem] = useState(null);
+  const [expandedMenus, setExpandedMenus] = useState({});
   const navRef = useRef(null);
   const navigate = useNavigate();
   const location = useLocation();
@@ -30,17 +32,13 @@ const MobileNavbar = () => {
   useEffect(() => {
     if (activeMenu !== "calculators") {
       setClickedItem(null);
-      return;
     }
-
     if (location.pathname === "/calculators") {
       const params = new URLSearchParams(location.search);
       const tab = params.get("tab");
       const tabs = ["emi", "eligibility", "balance-transfer", "foreclosure", "prepayment"];
       const idx = tabs.indexOf(tab);
       setClickedItem(idx !== -1 ? idx : 0);
-    } else {
-      setClickedItem(null);
     }
   }, [location, activeMenu]);
 
@@ -49,13 +47,13 @@ const MobileNavbar = () => {
     if (menu === "home") {
       setActiveMenu(null);
       setClickedItem(null);
-      window.scrollTo({ top: 0, behavior: "auto" });
       navigate("/");
+      window.scrollTo({ top: 0, behavior: "auto" });
     } else if (menu === "offers") {
       setActiveMenu(null);
       setClickedItem(null);
-      window.scrollTo({ top: 0, behavior: "auto" });
       navigate("/offers&cashback");
+      window.scrollTo({ top: 0, behavior: "auto" });
     } else {
       setActiveMenu(activeMenu === menu ? null : menu);
       setClickedItem(null);
@@ -66,6 +64,7 @@ const MobileNavbar = () => {
     if (navRef.current && !navRef.current.contains(e.target)) {
       setActiveMenu(null);
       setClickedItem(null);
+      setExpandedMenus({});
     }
   };
 
@@ -75,10 +74,18 @@ const MobileNavbar = () => {
   }, []);
 
   const handleNavigation = (path, index, query = "") => {
-    window.scrollTo({ top: 0, behavior: "auto" });
     navigate(path + query);
+    window.scrollTo({ top: 0, behavior: "auto" });
     setActiveMenu(null);
     setClickedItem(index);
+    setExpandedMenus({});
+  };
+
+  const toggleExpand = (key) => {
+    setExpandedMenus((prev) => ({
+      ...prev,
+      [key]: !prev[key]
+    }));
   };
 
   if (!isMobile) return null;
@@ -100,12 +107,17 @@ const MobileNavbar = () => {
         borderTop: "2px solid #ddd",
       }}
     >
-      {["home", "loans", "calculators", "offers", "more"].map((menu) => (
-        <div key={menu} style={{ textAlign: "center", cursor: "pointer" }} onClick={(e) => toggleMenu(menu, e)}>
-          <div style={{ marginBottom: "5px" }}>
+      {["home", "loans", "calculators", "banks", "offers", "more"].map((menu) => (
+        <div
+          key={menu}
+          style={{ textAlign: "center", cursor: "pointer" }}
+          onClick={(e) => toggleMenu(menu, e)}
+        >
+          <div style={{ marginBottom: "5px", display: "flex", justifyContent: "center" }}>
             {menu === "home" && <FaHome style={iconStyle} />}
             {menu === "loans" && <FaRupeeSign style={iconStyle} />}
             {menu === "calculators" && <FaCalculator style={iconStyle} />}
+            {menu === "banks" && <FaBuilding style={iconStyle} />}
             {menu === "offers" && <FaTags style={iconStyle} />}
             {menu === "more" && <FaTh style={iconStyle} />}
           </div>
@@ -134,6 +146,7 @@ const MobileNavbar = () => {
               exit={{ y: 50, opacity: 0 }}
               transition={{ duration: 0.3 }}
             >
+              {/* Loans submenu */}
               {menu === "loans" &&
                 [
                   { name: "Home Loan", path: "/home-loan", icon: <FaBuilding style={iconStyle} /> },
@@ -148,15 +161,18 @@ const MobileNavbar = () => {
                       textAlign: "center",
                       cursor: "pointer",
                       backgroundColor: clickedItem === idx ? "#FFD700" : "#f8f8f8",
-                      transition: "background-color 0.3s ease",
                       borderRadius: "8px",
                     }}
                     onClick={() => handleNavigation(item.path, idx)}
                   >
-                    {item.icon} <br /> {item.name}
+                    <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                      {item.icon}
+                      <span>{item.name}</span>
+                    </div>
                   </div>
                 ))}
 
+              {/* Calculators submenu */}
               {menu === "calculators" &&
                 [
                   { name: "EMI Calculator", path: "/calculators", query: "?tab=emi", icon: <FaCalculator style={iconStyle} /> },
@@ -172,15 +188,45 @@ const MobileNavbar = () => {
                       textAlign: "center",
                       cursor: "pointer",
                       backgroundColor: clickedItem === idx ? "#FFD700" : "#f8f8f8",
-                      transition: "background-color 0.3s ease",
                       borderRadius: "8px",
                     }}
                     onClick={() => handleNavigation(item.path, idx, item.query)}
                   >
-                    {item.icon} <br /> {item.name}
+                    <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                      {item.icon}
+                      <span>{item.name}</span>
+                    </div>
                   </div>
                 ))}
 
+              {/* Banks submenu */}
+              {menu === "banks" &&
+                [
+                  { name: "HDFC Bank", path: "/hdfc" },
+                  { name: "ICICI Bank", path: "/icici" },
+                  { name: "SBI Bank", path: "/sbi" },
+                  { name: "Axis Bank", path: "/axis" },
+                  { name: "Bank of Baroda", path: "/bob" }
+                ].map((bank, idx) => (
+                  <div
+                    key={idx}
+                    style={{
+                      padding: "10px",
+                      textAlign: "center",
+                      cursor: "pointer",
+                      backgroundColor: clickedItem === idx ? "#FFD700" : "#f8f8f8",
+                      borderRadius: "8px",
+                    }}
+                    onClick={() => handleNavigation(bank.path, idx)}
+                  >
+                    <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                      <FaBuilding style={iconStyle} />
+                      <span>{bank.name}</span>
+                    </div>
+                  </div>
+                ))}
+
+              {/* Offers submenu */}
               {menu === "offers" &&
                 [
                   { name: "Cashback Offers", path: "/offers&cashback" },
@@ -193,15 +239,17 @@ const MobileNavbar = () => {
                       textAlign: "center",
                       cursor: "pointer",
                       backgroundColor: clickedItem === idx ? "#FFD700" : "#f8f8f8",
-                      transition: "background-color 0.3s ease",
                       borderRadius: "8px",
                     }}
                     onClick={() => handleNavigation(item.path, idx)}
                   >
-                    {item.name}
+                    <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                      <span>{item.name}</span>
+                    </div>
                   </div>
                 ))}
 
+              {/* More submenu */}
               {menu === "more" &&
                 [
                   { name: "Contact Us", path: "/contact", icon: <FaPhoneAlt style={iconStyle} /> },
@@ -209,18 +257,20 @@ const MobileNavbar = () => {
                   { name: "FAQs", path: "/faqs", icon: <FaQuestionCircle style={iconStyle} /> },
                 ].map((item, idx) => (
                   <div
-                    key={idx}
+                    key={idx + 100}
                     style={{
                       padding: "10px",
                       textAlign: "center",
                       cursor: "pointer",
-                      backgroundColor: clickedItem === idx ? "#FFD700" : "#f8f8f8",
-                      transition: "background-color 0.3s ease",
+                      backgroundColor: clickedItem === idx + 100 ? "#FFD700" : "#f8f8f8",
                       borderRadius: "8px",
                     }}
-                    onClick={() => handleNavigation(item.path, idx)}
+                    onClick={() => handleNavigation(item.path, idx + 100)}
                   >
-                    {item.icon} <br /> {item.name}
+                    <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                      {item.icon}
+                      <span>{item.name}</span>
+                    </div>
                   </div>
                 ))}
             </motion.div>

@@ -19,16 +19,16 @@ const Footer = () => {
               Providing innovative financial solutions that empower individuals and businesses to achieve their dreams with ease.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="w-9 h-9 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-600 transition-colors">
+              <a href="#" className="w-9 h-9 rounded-full bg-gray-800 flex items-center justify-center hover:bg-[#FFD700] transition-colors">
                 <Facebook className="h-5 w-5" />
               </a>
-              <a href="#" className="w-9 h-9 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-600 transition-colors">
+              <a href="#" className="w-9 h-9 rounded-full bg-gray-800 flex items-center justify-center hover:bg-[#FFD700] transition-colors">
                 <Twitter className="h-5 w-5" />
               </a>
-              <a href="#" className="w-9 h-9 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-600 transition-colors">
+              <a href="#" className="w-9 h-9 rounded-full bg-gray-800 flex items-center justify-center hover:bg-[#FFD700] transition-colors">
                 <Linkedin className="h-5 w-5" />
               </a>
-              <a href="#" className="w-9 h-9 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-600 transition-colors">
+              <a href="#" className="w-9 h-9 rounded-full bg-gray-800 flex items-center justify-center hover:bg-[#FFD700] transition-colors">
                 <Instagram className="h-5 w-5" />
               </a>
             </div>
@@ -39,19 +39,18 @@ const Footer = () => {
             <div className="flex-1">
               <h3 className="text-lg font-bold mb-4">Quick Links</h3>
               <ul className="space-y-3">
-                <li><Link to="/" className="text-gray-400 hover:text-teal-400">Home</Link></li>
-                <li><Link to="/about" className="text-gray-400 hover:text-teal-400">About Us</Link></li>
-                <li><Link to="/loans" className="text-gray-400 hover:text-teal-400">Loan Services</Link></li>
-                <li><Link to="/contact" className="text-gray-400 hover:text-teal-400">Contact</Link></li>
-                
+                <li><Link to="/" className="text-gray-400 hover:text-[#FFD700]">Home</Link></li>
+                <li><Link to="/about" className="text-gray-400 hover:text-[#FFD700]">About Us</Link></li>
+                <li><Link to="/loans" className="text-gray-400 hover:text-[#FFD700]">Loan Services</Link></li>
+                <li><Link to="/contact" className="text-gray-400 hover:text-[#FFD700]">Contact</Link></li>
               </ul>
             </div>
             <div className="flex-1">
               <h3 className="text-lg font-bold mb-4">Legal & Policies</h3>
               <ul className="space-y-3">
-                <li><Link to="/terms" className="text-gray-400 hover:text-teal-400">Terms & Conditions</Link></li>
-                <li><Link to="/privacy" className="text-gray-400 hover:text-teal-400">Privacy Policy</Link></li>
-                <li><Link to="/disclaimer" className="text-gray-400 hover:text-teal-400">Disclaimer</Link></li>
+                <li><Link to="/terms" className="text-gray-400 hover:text-[#FFD700]">Terms & Conditions</Link></li>
+                <li><Link to="/privacy" className="text-gray-400 hover:text-[#FFD700]">Privacy Policy</Link></li>
+                <li><Link to="/disclaimer" className="text-gray-400 hover:text-[#FFD700]">Disclaimer</Link></li>
               </ul>
             </div>
           </div>
@@ -61,16 +60,16 @@ const Footer = () => {
             <div className="flex-1">
               <h3 className="text-lg font-bold mb-4">Support</h3>
               <ul className="space-y-3">
-                <li><Link to="/faqs" className="text-gray-400 hover:text-teal-400">FAQs</Link></li>
-                <li><Link to="/customer" className="text-gray-400 hover:text-teal-400">Customer Support</Link></li>
-                <li><Link to="/bank" className="text-gray-400 hover:text-teal-400">Bank Partner Details</Link></li>
+                <li><Link to="/faqs" className="text-gray-400 hover:text-[#FFD700]">FAQs</Link></li>
+                <li><Link to="/customer" className="text-gray-400 hover:text-[#FFD700]">Customer Support</Link></li>
+                <li><Link to="/bank" className="text-gray-400 hover:text-[#FFD700]">Bank Partner Details</Link></li>
               </ul>
             </div>
             <div className="flex-1">
               <h3 className="text-lg font-bold mb-4">Join Us</h3>
               <ul className="space-y-3">
-                <li><Link to="/refer" className="text-gray-400 hover:text-teal-400">Refer & Earn</Link></li>
-                <li><Link to="/join" className="text-gray-400 hover:text-teal-400">Join as Business Partner</Link></li>
+                <li><Link to="/refer" className="text-gray-400 hover:text-[#FFD700]">Refer & Earn</Link></li>
+                <li><Link to="/join" className="text-gray-400 hover:text-[#FFD700]">Join as Business Partner</Link></li>
               </ul>
             </div>
           </div>
@@ -83,13 +82,13 @@ const Footer = () => {
               &copy; {new Date().getFullYear()} Hously Finserv. All rights reserved.
             </div>
             <div className="flex space-x-4 md:justify-end text-sm">
-              <Link to="/terms" className="text-gray-400 hover:text-teal-400 transition-colors">
+              <Link to="/terms" className="text-gray-400 hover:text-[#FFD700] transition-colors">
                 Terms of Service
               </Link>
-              <Link to="/privacy" className="text-gray-400 hover:text-teal-400 transition-colors">
+              <Link to="/privacy" className="text-gray-400 hover:text-[#FFD700] transition-colors">
                 Privacy Policy
               </Link>
-              {/* <Link to="/sitemap" className="text-gray-400 hover:text-teal-400 transition-colors">
+              {/* <Link to="/sitemap" className="text-gray-400 hover:text-[#FFD700] transition-colors">
                 Sitemap
               </Link> */}
             </div>

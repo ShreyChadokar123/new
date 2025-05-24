@@ -35,8 +35,11 @@ const Index = () => {
   }, []);
 
   return (
+    
     <Layout>
+      
       <Hero />
+       
       <div className="animate-on-scroll">
         <HappyCustomerStats />
       </div>
@@ -48,6 +51,21 @@ const Index = () => {
       </div>
 
       {/* ✅ Custom Loan Calculator section with design */}
+      {/* <div className="text-center mb-8">
+        <h2 className="text-3xl sm:text-4xl font-bold">
+          <span className="text-black">Loans </span>
+          <span className="bg-gradient-to-r from-[#0074d9] to-[#00c6ff] text-transparent bg-clip-text">
+            Calculators
+          </span>
+        </h2>
+        <p className="text-gray-600 text-sm sm:text-lg mt-3 max-w-2xl mx-auto">
+          Explore our range of loan products designed to meet your financial needs
+          with the best terms in the market.
+          
+        </p>
+
+
+      </div> */}
       <div className="animate-on-scroll">
         <div className="min-h-screen bg-gray-50 py-8 px-4 sm:px-6 lg:px-8">
           <div className="w-full mx-auto">
@@ -70,13 +88,16 @@ const Index = () => {
       <div className="animate-on-scroll">
         <HappyCustomers />
       </div>
-      <div className="animate-on-scroll">
-        <ChatWidth />
-      </div>
         <div className="animate-on-scroll">
         <BlogsPage/>
       </div>
+      {/* <ChatWidth>
+      
+     </ChatWidth> */}
     </Layout>
+
+  
+      
   );
 };
 
